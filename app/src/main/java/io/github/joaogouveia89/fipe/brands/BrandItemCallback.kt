@@ -1,4 +1,4 @@
-package io.github.joaogouveia89.fipe
+package io.github.joaogouveia89.fipe.brands
 
 import androidx.recyclerview.widget.DiffUtil
 import io.github.joaogouveia89.fipe.network.Brand

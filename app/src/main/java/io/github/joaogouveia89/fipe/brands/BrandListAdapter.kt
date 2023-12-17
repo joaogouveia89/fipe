@@ -1,8 +1,9 @@
-package io.github.joaogouveia89.fipe
+package io.github.joaogouveia89.fipe.brands
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.network.Brand
 
 class BrandListAdapter: ListAdapter<Brand, BrandViewHolder>(BrandItemCallback) {
