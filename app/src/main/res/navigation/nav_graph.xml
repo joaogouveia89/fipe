@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/brandListFragment"
         android:name="io.github.joaogouveia89.fipe.brands.BrandListFragment"
-        android:label="fragment_brand_list"
+        android:label="@string/brands"
         tools:layout="@layout/fragment_brand_list" />
 </navigation>
