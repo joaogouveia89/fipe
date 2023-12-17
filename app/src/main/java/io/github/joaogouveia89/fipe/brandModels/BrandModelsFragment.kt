@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import io.github.joaogouveia89.fipe.R
+import io.github.joaogouveia89.fipe.ktx.setTitle
 
 class BrandModelsFragment : Fragment() {
 
@@ -23,6 +26,8 @@ class BrandModelsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setTitle(getString(R.string.brands_models_list, args.brand.name))
 
         view.findViewById<TextView>(R.id.test).text = args.brand.toString()
     }

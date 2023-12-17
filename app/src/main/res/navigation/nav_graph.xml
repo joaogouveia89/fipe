@@ -8,11 +8,12 @@
     <fragment
         android:id="@+id/brandListFragment"
         android:name="io.github.joaogouveia89.fipe.brands.BrandListFragment"
-        android:label="@string/brands"
+        android:label="@string/brands_list"
         tools:layout="@layout/fragment_brand_list" >
         <action
             android:id="@+id/action_brandListFragment_to_brandModelsFragment"
-            app:destination="@id/brandModelsFragment" >
+            app:destination="@id/brandModelsFragment"
+            app:popUpToSaveState="true">
         </action>
     </fragment>
     <fragment

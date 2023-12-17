@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.joaogouveia89.fipe.OnBrandSelected
 import io.github.joaogouveia89.fipe.R
+import io.github.joaogouveia89.fipe.ktx.setTitle
 import io.github.joaogouveia89.fipe.network.Brand
 import io.github.joaogouveia89.fipe.network.FipeApi
 import retrofit2.Call
@@ -36,7 +37,7 @@ class BrandListFragment : Fragment() {
             if (brands != null) {
                 brandListAdapter.submitList(brands)
 
-                (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.brands_list_size, brands.size)
+                setTitle(getString(R.string.brands_list_size, brands.size))
             }else{
                 Log.i("JOAODEBUG", "brands is null")
             }
