@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.github.joaogouveia89.fipe.OnBrandSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.network.Brand
 import io.github.joaogouveia89.fipe.network.FipeApi
@@ -20,7 +22,12 @@ import retrofit2.Response
 class BrandListFragment : Fragment() {
 
     private val api = FipeApi()
-    private val brandListAdapter = BrandListAdapter()
+    private val brandListAdapter = BrandListAdapter(object : OnBrandSelected{
+        override fun onSelected(brand: Brand) {
+            val action = BrandListFragmentDirections.actionBrandListFragmentToBrandModelsFragment(brand)
+            findNavController().navigate(action)
+        }
+    })
 
     private val callback = object : Callback<List<Brand?>?> {
         override fun onResponse(call: Call<List<Brand?>?>, response: Response<List<Brand?>?>) {

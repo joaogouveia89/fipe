@@ -9,5 +9,19 @@
         android:id="@+id/brandListFragment"
         android:name="io.github.joaogouveia89.fipe.brands.BrandListFragment"
         android:label="@string/brands"
-        tools:layout="@layout/fragment_brand_list" />
+        tools:layout="@layout/fragment_brand_list" >
+        <action
+            android:id="@+id/action_brandListFragment_to_brandModelsFragment"
+            app:destination="@id/brandModelsFragment" >
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/brandModelsFragment"
+        android:name="io.github.joaogouveia89.fipe.brandModels.BrandModelsFragment"
+        android:label="fragment_brand_models"
+        tools:layout="@layout/fragment_brand_models">
+        <argument
+            android:name="brand"
+            app:argType="io.github.joaogouveia89.fipe.network.Brand" />
+    </fragment>
 </navigation>
