@@ -23,6 +23,6 @@
         tools:layout="@layout/fragment_brand_models">
         <argument
             android:name="brand"
-            app:argType="io.github.joaogouveia89.fipe.network.Brand" />
+            app:argType="io.github.joaogouveia89.fipe.network.models.FipeResult" />
     </fragment>
 </navigation>

@@ -5,16 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import io.github.joaogouveia89.fipe.OnBrandSelected
+import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
+import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.Brand
+import io.github.joaogouveia89.fipe.network.models.FipeResult
 import io.github.joaogouveia89.fipe.network.FipeApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,15 +23,15 @@ import retrofit2.Response
 class BrandListFragment : Fragment() {
 
     private val api = FipeApi()
-    private val brandListAdapter = BrandListAdapter(object : OnBrandSelected{
-        override fun onSelected(brand: Brand) {
-            val action = BrandListFragmentDirections.actionBrandListFragmentToBrandModelsFragment(brand)
+    private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected{
+        override fun onSelected(item: FipeResult) {
+            val action = BrandListFragmentDirections.actionBrandListFragmentToBrandModelsFragment(item)
             findNavController().navigate(action)
         }
     })
 
-    private val callback = object : Callback<List<Brand?>?> {
-        override fun onResponse(call: Call<List<Brand?>?>, response: Response<List<Brand?>?>) {
+    private val callback = object : Callback<List<FipeResult?>?> {
+        override fun onResponse(call: Call<List<FipeResult?>?>, response: Response<List<FipeResult?>?>) {
             val brands = response.body()
 
             if (brands != null) {
@@ -43,7 +43,7 @@ class BrandListFragment : Fragment() {
             }
         }
 
-        override fun onFailure(call: Call<List<Brand?>?>, t: Throwable) {
+        override fun onFailure(call: Call<List<FipeResult?>?>, t: Throwable) {
             Log.i("JOAODEBUG", "FAIL")
         }
 

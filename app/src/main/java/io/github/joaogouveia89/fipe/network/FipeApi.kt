@@ -13,4 +13,6 @@ class FipeApi {
     val service: FipeService = retrofit.create(FipeService::class.java)
 
     fun fetchBrands() = service.fetchBrands()
+
+    fun fetchBrandModels(brandId: Int) = service.fetchBrandModels(brandId)
 }

@@ -1,11 +1,11 @@
-package io.github.joaogouveia89.fipe.network
+package io.github.joaogouveia89.fipe.network.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Brand(
-    @SerializedName("codigo") val code: Int,
+data class FipeResult(
+    @SerializedName("codigo") val code: String,
     @SerializedName("nome") val name: String
 ): Parcelable
