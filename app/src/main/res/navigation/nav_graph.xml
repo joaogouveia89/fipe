@@ -24,5 +24,21 @@
         <argument
             android:name="brand"
             app:argType="io.github.joaogouveia89.fipe.network.models.FipeResult" />
+        <action
+            android:id="@+id/action_brandModelsFragment_to_modelYearsFragment"
+            app:destination="@id/modelYearsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modelYearsFragment"
+        android:name="io.github.joaogouveia89.fipe.modelYears.ModelYearsFragment"
+        android:label="fragment_model_years"
+        tools:layout="@layout/fragment_model_years">
+        <argument
+            android:name="brand"
+            app:argType="io.github.joaogouveia89.fipe.network.models.FipeResult" />
+
+        <argument
+            android:name="brandModel"
+            app:argType="io.github.joaogouveia89.fipe.network.models.FipeResult" />
     </fragment>
 </navigation>

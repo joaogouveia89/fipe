@@ -1,4 +1,4 @@
-package io.github.joaogouveia89.fipe.brandModels
+package io.github.joaogouveia89.fipe.modelYears
 
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,66 +21,70 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BrandModelsFragment : Fragment() {
 
-    private val args: BrandModelsFragmentArgs by navArgs()
+class ModelYearsFragment : Fragment() {
+
     private val api = FipeApi()
+    private val args: ModelYearsFragmentArgs by navArgs()
 
-    private val callback = object : Callback<BrandModels?> {
-        override fun onResponse(call: Call<BrandModels?>, response: Response<BrandModels?>) {
-            val brandsModels = response.body()
+    private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
+        override fun onSelected(item: FipeResult) {
+            /*
+            val action = BrandModelsFragmentDirections.actionBrandModelsFragmentToModelYearsFragment(args.brand, brandModel)
+            findNavController().navigate(action)
+             */
+        }
+    })
 
-            if (brandsModels != null) {
-                brandModelsListAdapter.submitList(brandsModels.models)
+    private val callback = object : Callback<List<FipeResult?>?> {
+        override fun onResponse(call: Call<List<FipeResult?>?>, response: Response<List<FipeResult?>?>) {
+            val brandsModelsYears = response.body()
 
-                setTitle(getString(R.string.brands_models_list_size, args.brand.name, brandsModels.models.size))
+            if (brandsModelsYears != null) {
+                brandListAdapter.submitList(brandsModelsYears)
+
+                setTitle(getString(R.string.brands_models_years_list_size, args.brandModel.name, brandsModelsYears.size))
             }else{
                 Log.i("JOAODEBUG", "brands is null")
             }
         }
 
-        override fun onFailure(call: Call<BrandModels?>, t: Throwable) {
+        override fun onFailure(call: Call<List<FipeResult?>?>, t: Throwable) {
             Log.i("JOAODEBUG", "FAIL ${t.message}")
         }
 
     }
-
-    private val brandModelsListAdapter = FipeResultListAdapter(object : OnListItemSelected {
-        override fun onSelected(brandModel: FipeResult) {
-            val action = BrandModelsFragmentDirections.actionBrandModelsFragmentToModelYearsFragment(args.brand, brandModel)
-            findNavController().navigate(action)
-        }
-    })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_brand_models, container, false)
+        return inflater.inflate(R.layout.fragment_model_years, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(getString(R.string.brands_models_list, args.brand.name))
+        setTitle(getString(R.string.brands_models_years_list))
 
-        val brandModels = api.fetchBrandModels(args.brand.code.toInt())
+        val brandModelYears = api.fetchBrandModelYears(args.brand.code.toInt(), args.brandModel.code)
 
-        brandModels?.enqueue(callback)
+        brandModelYears?.enqueue(callback)
 
-        val recycler = view.findViewById<RecyclerView>(R.id.brand_models_list)
+        val recycler = view.findViewById<RecyclerView>(R.id.brand_model_years_list)
 
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         recycler.apply {
             addItemDecoration(
                 DividerItemDecoration(
-                context,
-                layoutManager.orientation
-            ))
+                    context,
+                    layoutManager.orientation
+                )
+            )
 
-            adapter = brandModelsListAdapter
+            adapter = brandListAdapter
         }
     }
 }

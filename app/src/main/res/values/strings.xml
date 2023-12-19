@@ -6,5 +6,7 @@
     <string name="brands_list_size">Brands - %1$d</string>
     <string name="brands_models_list">%1$s models</string>
     <string name="brands_models_list_size">%1$s models - %2$d</string>
+    <string name="brands_models_years_list">Model years</string>
+    <string name="brands_models_years_list_size">Model years - %2$d</string>
 
 </resources>

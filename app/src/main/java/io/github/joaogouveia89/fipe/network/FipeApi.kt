@@ -15,4 +15,6 @@ class FipeApi {
     fun fetchBrands() = service.fetchBrands()
 
     fun fetchBrandModels(brandId: Int) = service.fetchBrandModels(brandId)
+
+    fun fetchBrandModelYears(brandId: Int, modelId: String) = service.fetchBrandModelYears(brandId, modelId)
 }
