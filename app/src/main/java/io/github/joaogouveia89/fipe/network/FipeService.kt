@@ -2,6 +2,7 @@ package io.github.joaogouveia89.fipe.network
 
 import io.github.joaogouveia89.fipe.network.models.BrandModels
 import io.github.joaogouveia89.fipe.network.models.FipeResult
+import io.github.joaogouveia89.fipe.network.models.ModelDetails
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,4 +19,11 @@ interface FipeService {
         @Path("brandId") brandId: Int,
         @Path("modelId") modelId: String
     ): Call<List<FipeResult?>?>?
+
+    @GET("carros/marcas/{brandId}/modelos/{modelId}/anos/{yearId}")
+    fun fetchModelDetails(
+        @Path("brandId") brandId: Int,
+        @Path("modelId") modelId: String,
+        @Path("yearId") yearId: String
+    ): Call<ModelDetails?>?
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,11 +28,9 @@ class ModelYearsFragment : Fragment() {
     private val args: ModelYearsFragmentArgs by navArgs()
 
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
-        override fun onSelected(item: FipeResult) {
-            /*
-            val action = BrandModelsFragmentDirections.actionBrandModelsFragmentToModelYearsFragment(args.brand, brandModel)
+        override fun onSelected(modelYear: FipeResult) {
+            val action = ModelYearsFragmentDirections.actionModelYearsFragmentToModelDetailsFragment(args.brand, args.brandModel, modelYear)
             findNavController().navigate(action)
-             */
         }
     })
 

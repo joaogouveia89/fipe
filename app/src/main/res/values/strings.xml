@@ -8,5 +8,13 @@
     <string name="brands_models_list_size">%1$s models - %2$d</string>
     <string name="brands_models_years_list">Model years</string>
     <string name="brands_models_years_list_size">Model years - %2$d</string>
+    <string name="model_details">Model Details</string>
+    <string name="model_name_label">Model</string>
+    <string name="model_brand_label">Brand</string>
+    <string name="model_year_label">Year</string>
+    <string name="model_fipecode_label">Fipe code</string>
+    <string name="model_referencemonth_label">Reference Month</string>
+    <string name="model_fuel_label">Fuel</string>
+    <string name="model_value_label">Value</string>
 
 </resources>
