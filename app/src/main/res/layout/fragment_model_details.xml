@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/model_name_label"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/model_name"
@@ -31,7 +31,7 @@
         android:paddingTop="8dp"
         android:text="@string/model_brand_label"
         app:layout_constraintTop_toBottomOf="@id/model_name_label"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/model_brand"
@@ -50,7 +50,7 @@
         android:paddingTop="8dp"
         android:text="@string/model_year_label"
         app:layout_constraintTop_toBottomOf="@id/model_brand_label"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/model_year"
@@ -69,7 +69,7 @@
         android:paddingTop="8dp"
         android:text="@string/model_fipecode_label"
         app:layout_constraintTop_toBottomOf="@id/model_year_label"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/model_fipecode"
@@ -88,7 +88,7 @@
         android:paddingTop="8dp"
         android:text="@string/model_referencemonth_label"
         app:layout_constraintTop_toBottomOf="@id/model_fipecode_label"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/model_referencemonth"
@@ -107,7 +107,7 @@
         android:paddingTop="8dp"
         android:text="@string/model_fuel_label"
         app:layout_constraintTop_toBottomOf="@id/model_referencemonth_label"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/model_fuel"
@@ -126,7 +126,7 @@
         android:paddingTop="8dp"
         android:text="@string/model_value_label"
         app:layout_constraintTop_toBottomOf="@id/model_fuel_label"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/model_value"

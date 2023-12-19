@@ -2,16 +2,15 @@ package io.github.joaogouveia89.fipe.modelDetails
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.ktx.setTitle
 import io.github.joaogouveia89.fipe.network.FipeApi
-import io.github.joaogouveia89.fipe.network.models.BrandModels
 import io.github.joaogouveia89.fipe.network.models.ModelDetails
 import retrofit2.Call
 import retrofit2.Callback
@@ -85,7 +84,11 @@ class ModelDetailsFragment : Fragment() {
         setTitle(getString(R.string.model_details))
 
         val modelDetails =
-            api.fetchModelDetails(args.brand.code.toInt(), args.brandModel.code, args.brandModelYear.code)
+            api.fetchModelDetails(
+                args.brand.code.toInt(),
+                args.brandModel.code,
+                args.brandModelYear.code
+            )
 
         modelDetails?.enqueue(callback)
     }

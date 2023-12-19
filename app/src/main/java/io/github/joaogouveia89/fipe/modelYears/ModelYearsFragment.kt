@@ -29,7 +29,12 @@ class ModelYearsFragment : Fragment() {
 
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
         override fun onSelected(modelYear: FipeResult) {
-            val action = ModelYearsFragmentDirections.actionModelYearsFragmentToModelDetailsFragment(args.brand, args.brandModel, modelYear)
+            val action =
+                ModelYearsFragmentDirections.actionModelYearsFragmentToModelDetailsFragment(
+                    args.brand,
+                    args.brandModel,
+                    modelYear
+                )
             findNavController().navigate(action)
         }
     })
