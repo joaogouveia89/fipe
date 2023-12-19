@@ -3,8 +3,10 @@ package io.github.joaogouveia89.fipe
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +24,14 @@ class MainActivity : AppCompatActivity() {
             fallbackOnNavigateUpListener = ::onSupportNavigateUp
         )
         findViewById<Toolbar>(R.id.toolbar).apply {
-            setupWithNavController(navController, appBarConfiguration)
             setSupportActionBar(this)
+            setupActionBarWithNavController(navController)
+            this.setupWithNavController(navController)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
