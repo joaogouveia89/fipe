@@ -7,9 +7,10 @@ import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.network.models.FipeResult
 
-class FipeResultListAdapter(private val onItemSelected: OnListItemSelected): ListAdapter<FipeResult, FipeResultViewHolder>(
-    FipeResultItemCallback
-) {
+class FipeResultListAdapter(private val onItemSelected: OnListItemSelected) :
+    ListAdapter<FipeResult, FipeResultViewHolder>(
+        FipeResultItemCallback
+    ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FipeResultViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.string_list_item, parent, false)

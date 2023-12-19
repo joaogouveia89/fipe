@@ -14,8 +14,8 @@ import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.models.FipeResult
 import io.github.joaogouveia89.fipe.network.FipeApi
+import io.github.joaogouveia89.fipe.network.models.FipeResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,22 +23,26 @@ import retrofit2.Response
 class BrandListFragment : Fragment() {
 
     private val api = FipeApi()
-    private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected{
+    private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
         override fun onSelected(item: FipeResult) {
-            val action = BrandListFragmentDirections.actionBrandListFragmentToBrandModelsFragment(item)
+            val action =
+                BrandListFragmentDirections.actionBrandListFragmentToBrandModelsFragment(item)
             findNavController().navigate(action)
         }
     })
 
     private val callback = object : Callback<List<FipeResult?>?> {
-        override fun onResponse(call: Call<List<FipeResult?>?>, response: Response<List<FipeResult?>?>) {
+        override fun onResponse(
+            call: Call<List<FipeResult?>?>,
+            response: Response<List<FipeResult?>?>
+        ) {
             val brands = response.body()
 
             if (brands != null) {
                 brandListAdapter.submitList(brands)
 
                 setTitle(getString(R.string.brands_list_size, brands.size))
-            }else{
+            } else {
                 Log.i("JOAODEBUG", "brands is null")
             }
         }
@@ -68,10 +72,12 @@ class BrandListFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         recycler.apply {
-            addItemDecoration(DividerItemDecoration(
-                context,
-                layoutManager.orientation
-            ))
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    layoutManager.orientation
+                )
+            )
 
             adapter = brandListAdapter
         }

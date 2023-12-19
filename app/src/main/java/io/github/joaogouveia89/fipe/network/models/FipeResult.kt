@@ -8,4 +8,4 @@ import kotlinx.parcelize.Parcelize
 data class FipeResult(
     @SerializedName("codigo") val code: String,
     @SerializedName("nome") val name: String
-): Parcelable
+) : Parcelable

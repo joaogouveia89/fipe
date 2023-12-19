@@ -3,7 +3,6 @@ package io.github.joaogouveia89.fipe
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -23,8 +22,8 @@ class MainActivity : AppCompatActivity() {
             fallbackOnNavigateUpListener = ::onSupportNavigateUp
         )
         findViewById<Toolbar>(R.id.toolbar).apply {
-                setupWithNavController(navController, appBarConfiguration)
-                setSupportActionBar(this)
-            }
+            setupWithNavController(navController, appBarConfiguration)
+            setSupportActionBar(this)
+        }
     }
 }

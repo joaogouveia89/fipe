@@ -2,10 +2,10 @@ package io.github.joaogouveia89.fipe.brandModels
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,8 +34,14 @@ class BrandModelsFragment : Fragment() {
             if (brandsModels != null) {
                 brandModelsListAdapter.submitList(brandsModels.models)
 
-                setTitle(getString(R.string.brands_models_list_size, args.brand.name, brandsModels.models.size))
-            }else{
+                setTitle(
+                    getString(
+                        R.string.brands_models_list_size,
+                        args.brand.name,
+                        brandsModels.models.size
+                    )
+                )
+            } else {
                 Log.i("JOAODEBUG", "brands is null")
             }
         }
@@ -48,7 +54,11 @@ class BrandModelsFragment : Fragment() {
 
     private val brandModelsListAdapter = FipeResultListAdapter(object : OnListItemSelected {
         override fun onSelected(brandModel: FipeResult) {
-            val action = BrandModelsFragmentDirections.actionBrandModelsFragmentToModelYearsFragment(args.brand, brandModel)
+            val action =
+                BrandModelsFragmentDirections.actionBrandModelsFragmentToModelYearsFragment(
+                    args.brand,
+                    brandModel
+                )
             findNavController().navigate(action)
         }
     })
@@ -77,9 +87,10 @@ class BrandModelsFragment : Fragment() {
         recycler.apply {
             addItemDecoration(
                 DividerItemDecoration(
-                context,
-                layoutManager.orientation
-            ))
+                    context,
+                    layoutManager.orientation
+                )
+            )
 
             adapter = brandModelsListAdapter
         }

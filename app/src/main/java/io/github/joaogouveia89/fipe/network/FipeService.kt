@@ -14,5 +14,8 @@ interface FipeService {
     fun fetchBrandModels(@Path("brandId") brandId: Int): Call<BrandModels?>?
 
     @GET("carros/marcas/{brandId}/modelos/{modelId}/anos")
-    fun fetchBrandModelYears(@Path("brandId") brandId: Int, @Path("modelId") modelId: String): Call<List<FipeResult?>?>?
+    fun fetchBrandModelYears(
+        @Path("brandId") brandId: Int,
+        @Path("modelId") modelId: String
+    ): Call<List<FipeResult?>?>?
 }

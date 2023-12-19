@@ -2,10 +2,10 @@ package io.github.joaogouveia89.fipe.modelYears
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +15,6 @@ import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
 import io.github.joaogouveia89.fipe.ktx.setTitle
 import io.github.joaogouveia89.fipe.network.FipeApi
-import io.github.joaogouveia89.fipe.network.models.BrandModels
 import io.github.joaogouveia89.fipe.network.models.FipeResult
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,14 +36,23 @@ class ModelYearsFragment : Fragment() {
     })
 
     private val callback = object : Callback<List<FipeResult?>?> {
-        override fun onResponse(call: Call<List<FipeResult?>?>, response: Response<List<FipeResult?>?>) {
+        override fun onResponse(
+            call: Call<List<FipeResult?>?>,
+            response: Response<List<FipeResult?>?>
+        ) {
             val brandsModelsYears = response.body()
 
             if (brandsModelsYears != null) {
                 brandListAdapter.submitList(brandsModelsYears)
 
-                setTitle(getString(R.string.brands_models_years_list_size, args.brandModel.name, brandsModelsYears.size))
-            }else{
+                setTitle(
+                    getString(
+                        R.string.brands_models_years_list_size,
+                        args.brandModel.name,
+                        brandsModelsYears.size
+                    )
+                )
+            } else {
                 Log.i("JOAODEBUG", "brands is null")
             }
         }
@@ -68,7 +76,8 @@ class ModelYearsFragment : Fragment() {
 
         setTitle(getString(R.string.brands_models_years_list))
 
-        val brandModelYears = api.fetchBrandModelYears(args.brand.code.toInt(), args.brandModel.code)
+        val brandModelYears =
+            api.fetchBrandModelYears(args.brand.code.toInt(), args.brandModel.code)
 
         brandModelYears?.enqueue(callback)
 
