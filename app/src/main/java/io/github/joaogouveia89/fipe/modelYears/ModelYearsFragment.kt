@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -26,6 +27,8 @@ class ModelYearsFragment : Fragment() {
 
     private val api = FipeApi()
     private val args: ModelYearsFragmentArgs by navArgs()
+
+    private val viewModel: ModelYearsViewModel by viewModels()
 
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
         override fun onSelected(modelYear: FipeResult) {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.ktx.setTitle
@@ -21,6 +22,8 @@ class ModelDetailsFragment : Fragment() {
     private val api = FipeApi()
 
     private val args: ModelDetailsFragmentArgs by navArgs()
+
+    private val viewModel: ModelDetailsViewModel by viewModels()
 
     private val modelName: TextView by lazy {
         requireView().findViewById(R.id.model_name)
