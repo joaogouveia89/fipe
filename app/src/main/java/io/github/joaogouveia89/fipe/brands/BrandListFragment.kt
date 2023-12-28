@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
+import io.github.joaogouveia89.fipe.databinding.FragmentBrandListBinding
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
+import io.github.joaogouveia89.fipe.ktx.addVerticalDivider
 import io.github.joaogouveia89.fipe.ktx.setTitle
 import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.FipeResult
@@ -21,6 +24,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class BrandListFragment : Fragment() {
+
+    private var binding: FragmentBrandListBinding? = null
 
     private val api = FipeApi()
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
@@ -58,7 +63,9 @@ class BrandListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_brand_list, container, false)
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_brand_list, container, false)
+
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,19 +74,9 @@ class BrandListFragment : Fragment() {
 
         brands?.enqueue(callback)
 
-        val recycler = view.findViewById<RecyclerView>(R.id.brands_list)
-
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-        recycler.apply {
-            addItemDecoration(
-                DividerItemDecoration(
-                    context,
-                    layoutManager.orientation
-                )
-            )
-
+        binding?.apply {
             adapter = brandListAdapter
+            brandsList.addVerticalDivider()
         }
     }
 }

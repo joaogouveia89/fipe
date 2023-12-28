@@ -9,6 +9,10 @@ android {
     namespace = "io.github.joaogouveia89.fipe"
     compileSdk = 34
 
+    dataBinding {
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "io.github.joaogouveia89.fipe"
         minSdk = 26
