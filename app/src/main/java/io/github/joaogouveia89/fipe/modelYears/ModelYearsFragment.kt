@@ -5,15 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
+import io.github.joaogouveia89.fipe.databinding.FragmentModelYearsBinding
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
+import io.github.joaogouveia89.fipe.ktx.addVerticalDivider
 import io.github.joaogouveia89.fipe.ktx.setTitle
 import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.FipeResult
@@ -26,6 +26,7 @@ class ModelYearsFragment : Fragment() {
 
     private val api = FipeApi()
     private val args: ModelYearsFragmentArgs by navArgs()
+    private var binding: FragmentModelYearsBinding? = null
 
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
         override fun onSelected(modelYear: FipeResult) {
@@ -71,8 +72,11 @@ class ModelYearsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_model_years, container, false)
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_model_years, container, false)
+
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,19 +89,9 @@ class ModelYearsFragment : Fragment() {
 
         brandModelYears?.enqueue(callback)
 
-        val recycler = view.findViewById<RecyclerView>(R.id.brand_model_years_list)
-
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-        recycler.apply {
-            addItemDecoration(
-                DividerItemDecoration(
-                    context,
-                    layoutManager.orientation
-                )
-            )
-
+        binding?.apply {
             adapter = brandListAdapter
+            brandModelYearsList.addVerticalDivider()
         }
     }
 }
