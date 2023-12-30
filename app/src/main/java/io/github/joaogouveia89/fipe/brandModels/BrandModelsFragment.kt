@@ -9,9 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.databinding.FragmentBrandModelsBinding
@@ -72,7 +69,12 @@ class BrandModelsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_brand_models, container, false)
+        binding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.fragment_brand_models,
+            container,
+            false
+        )
 
         return binding?.root
     }

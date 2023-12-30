@@ -60,7 +60,8 @@ class BrandListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_brand_list, container, false)
+        binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.fragment_brand_list, container, false)
 
         return binding?.root
     }

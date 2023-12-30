@@ -74,7 +74,8 @@ class ModelYearsFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_model_years, container, false)
+        binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.fragment_model_years, container, false)
 
         return binding?.root
     }
