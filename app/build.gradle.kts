@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -39,6 +40,7 @@ android {
 
 dependencies {
     val nav_version = "2.7.6"
+    val dagger_version = "2.50"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -53,6 +55,10 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    //Dagger
+    implementation("com.google.dagger:dagger:$dagger_version")
+    kapt ("com.google.dagger:dagger-compiler:$dagger_version")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

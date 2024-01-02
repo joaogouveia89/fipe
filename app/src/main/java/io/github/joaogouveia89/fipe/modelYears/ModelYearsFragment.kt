@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.github.joaogouveia89.fipe.FipeFragment
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
@@ -22,9 +23,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ModelYearsFragment : Fragment() {
+class ModelYearsFragment : FipeFragment() {
 
-    private val api = FipeApi()
     private val args: ModelYearsFragmentArgs by navArgs()
 
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
@@ -81,7 +81,7 @@ class ModelYearsFragment : Fragment() {
         setTitle(getString(R.string.brands_models_years_list))
 
         val brandModelYears =
-            api.fetchBrandModelYears(args.brand.code.toInt(), args.brandModel.code)
+            fipeApi.fetchBrandModelYears(args.brand.code.toInt(), args.brandModel.code)
 
         brandModelYears?.enqueue(callback)
 

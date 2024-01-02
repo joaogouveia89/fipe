@@ -5,24 +5,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.github.joaogouveia89.fipe.FipeFragment
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.FipeResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BrandListFragment : Fragment() {
+class BrandListFragment : FipeFragment() {
 
-    private val api = FipeApi()
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
         override fun onSelected(item: FipeResult) {
             val action =
@@ -63,7 +61,7 @@ class BrandListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val brands = api.fetchBrands()
+        val brands = fipeApi.fetchBrands()
 
         brands?.enqueue(callback)
 
