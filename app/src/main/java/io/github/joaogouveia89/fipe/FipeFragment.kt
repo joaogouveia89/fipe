@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import io.github.joaogouveia89.fipe.network.FipeApi
 import javax.inject.Inject
 
-open class FipeFragment: Fragment() {
+open class FipeFragment : Fragment() {
 
     @Inject
     lateinit var fipeApi: FipeApi

@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import io.github.joaogouveia89.fipe.FipeFragment
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.ModelDetails
 import retrofit2.Call
 import retrofit2.Callback

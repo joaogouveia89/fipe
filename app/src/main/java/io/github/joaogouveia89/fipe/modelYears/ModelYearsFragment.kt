@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -16,7 +15,6 @@ import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.FipeResult
 import retrofit2.Call
 import retrofit2.Callback
