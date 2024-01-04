@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".modelDetails.ModelDetailsFragment"
-    android:layout_margin="12dp">
+    android:layout_margin="12dp"
+    tools:context=".modelDetails.ModelDetailsFragment">
 
     <TextView
         android:id="@+id/model_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/model_name_label"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/model_name"
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="@string/model_brand_label"
-        app:layout_constraintTop_toBottomOf="@id/model_name_label"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model_name_label" />
 
     <TextView
         android:id="@+id/model_brand"
@@ -49,8 +49,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="@string/model_year_label"
-        app:layout_constraintTop_toBottomOf="@id/model_brand_label"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model_brand_label" />
 
     <TextView
         android:id="@+id/model_year"
@@ -68,8 +68,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="@string/model_fipecode_label"
-        app:layout_constraintTop_toBottomOf="@id/model_year_label"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model_year_label" />
 
     <TextView
         android:id="@+id/model_fipecode"
@@ -87,8 +87,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="@string/model_referencemonth_label"
-        app:layout_constraintTop_toBottomOf="@id/model_fipecode_label"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model_fipecode_label" />
 
     <TextView
         android:id="@+id/model_referencemonth"
@@ -106,8 +106,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="@string/model_fuel_label"
-        app:layout_constraintTop_toBottomOf="@id/model_referencemonth_label"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model_referencemonth_label" />
 
     <TextView
         android:id="@+id/model_fuel"
@@ -125,8 +125,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="@string/model_value_label"
-        app:layout_constraintTop_toBottomOf="@id/model_fuel_label"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model_fuel_label" />
 
     <TextView
         android:id="@+id/model_value"

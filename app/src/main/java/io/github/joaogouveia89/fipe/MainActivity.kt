@@ -1,7 +1,6 @@
 package io.github.joaogouveia89.fipe
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
@@ -9,13 +8,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.room.Room
-import io.github.joaogouveia89.fipe.room.DATABASE_NAME
-import io.github.joaogouveia89.fipe.room.FipeLocalDb
-import io.github.joaogouveia89.fipe.room.entities.Brand
-import io.github.joaogouveia89.fipe.room.entities.BrandModel
-import io.github.joaogouveia89.fipe.room.entities.Car
-import io.github.joaogouveia89.fipe.room.entities.ModelYear
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

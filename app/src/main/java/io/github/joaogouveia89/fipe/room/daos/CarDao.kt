@@ -1,9 +1,7 @@
 package io.github.joaogouveia89.fipe.room.daos
 
-import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.PrimaryKey
 import androidx.room.Query
 import io.github.joaogouveia89.fipe.room.GET_CAR_DETAILS
 import io.github.joaogouveia89.fipe.room.entities.Car

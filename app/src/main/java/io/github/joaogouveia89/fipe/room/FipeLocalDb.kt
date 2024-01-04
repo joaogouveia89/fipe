@@ -11,12 +11,14 @@ import io.github.joaogouveia89.fipe.room.entities.BrandModel
 import io.github.joaogouveia89.fipe.room.entities.Car
 import io.github.joaogouveia89.fipe.room.entities.ModelYear
 
-@Database(entities = [
-            Brand::class,
-            BrandModel::class,
-            ModelYear::class,
-            Car::class
-        ], version = 1)
+@Database(
+    entities = [
+        Brand::class,
+        BrandModel::class,
+        ModelYear::class,
+        Car::class
+    ], version = 1
+)
 abstract class FipeLocalDb : RoomDatabase() {
     abstract fun brandsDao(): BrandsDao
     abstract fun brandModelsDao(): BrandModelDao
