@@ -45,9 +45,10 @@ android {
 
 dependencies {
     val nav_version = "2.7.6"
-    val viewmodel_version = "2.6.2"
+    val lifecycle_version = "2.6.2"
     val dagger_version = "2.50"
     val roomVersion = "2.6.1"
+    val coroutinesVersion = "1.7.3"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -68,10 +69,20 @@ dependencies {
     kapt ("com.google.dagger:dagger-compiler:$dagger_version")
 
     //viewmodel
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
 
+
+    //Room DB
     implementation("androidx.room:room-runtime:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
