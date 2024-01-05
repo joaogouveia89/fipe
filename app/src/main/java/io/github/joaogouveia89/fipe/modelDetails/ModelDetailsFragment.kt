@@ -6,20 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import io.github.joaogouveia89.fipe.FipeFragment
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.databinding.FragmentModelDetailsBinding
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.ModelDetails
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ModelDetailsFragment : Fragment() {
-
-    private val api = FipeApi()
+class ModelDetailsFragment : FipeFragment() {
 
     private val args: ModelDetailsFragmentArgs by navArgs()
 
@@ -60,7 +57,7 @@ class ModelDetailsFragment : Fragment() {
         setTitle(getString(R.string.model_details))
 
         val modelDetails =
-            api.fetchModelDetails(
+            fipeApi.fetchModelDetails(
                 args.brand.code.toInt(),
                 args.brandModel.code,
                 args.brandModelYear.code

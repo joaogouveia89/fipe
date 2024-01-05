@@ -6,26 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import io.github.joaogouveia89.fipe.FipeFragment
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.databinding.FragmentBrandModelsBinding
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
 import io.github.joaogouveia89.fipe.ktx.addVerticalDivider
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.BrandModels
 import io.github.joaogouveia89.fipe.network.models.FipeResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BrandModelsFragment : Fragment() {
+class BrandModelsFragment : FipeFragment() {
 
     private val args: BrandModelsFragmentArgs by navArgs()
-    private val api = FipeApi()
     private var binding: FragmentBrandModelsBinding? = null
 
     private val callback = object : Callback<BrandModels?> {
@@ -84,7 +82,7 @@ class BrandModelsFragment : Fragment() {
 
         setTitle(getString(R.string.brands_models_list, args.brand.name))
 
-        val brandModels = api.fetchBrandModels(args.brand.code.toInt())
+        val brandModels = fipeApi.fetchBrandModels(args.brand.code.toInt())
 
         brandModels?.enqueue(callback)
 

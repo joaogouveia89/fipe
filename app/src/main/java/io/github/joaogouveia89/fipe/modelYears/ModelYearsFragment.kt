@@ -6,25 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import io.github.joaogouveia89.fipe.FipeFragment
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
 import io.github.joaogouveia89.fipe.databinding.FragmentModelYearsBinding
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
 import io.github.joaogouveia89.fipe.ktx.addVerticalDivider
 import io.github.joaogouveia89.fipe.ktx.setTitle
-import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.FipeResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class ModelYearsFragment : Fragment() {
+class ModelYearsFragment : FipeFragment() {
 
-    private val api = FipeApi()
     private val args: ModelYearsFragmentArgs by navArgs()
     private var binding: FragmentModelYearsBinding? = null
 
@@ -72,7 +70,6 @@ class ModelYearsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_model_years, container, false)
@@ -86,7 +83,7 @@ class ModelYearsFragment : Fragment() {
         setTitle(getString(R.string.brands_models_years_list))
 
         val brandModelYears =
-            api.fetchBrandModelYears(args.brand.code.toInt(), args.brandModel.code)
+            fipeApi.fetchBrandModelYears(args.brand.code.toInt(), args.brandModel.code)
 
         brandModelYears?.enqueue(callback)
 
