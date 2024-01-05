@@ -5,15 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import io.github.joaogouveia89.fipe.OnListItemSelected
 import io.github.joaogouveia89.fipe.R
+import io.github.joaogouveia89.fipe.databinding.FragmentBrandModelsBinding
 import io.github.joaogouveia89.fipe.fiperesult.FipeResultListAdapter
+import io.github.joaogouveia89.fipe.ktx.addVerticalDivider
 import io.github.joaogouveia89.fipe.ktx.setTitle
 import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.BrandModels
@@ -26,6 +26,7 @@ class BrandModelsFragment : Fragment() {
 
     private val args: BrandModelsFragmentArgs by navArgs()
     private val api = FipeApi()
+    private var binding: FragmentBrandModelsBinding? = null
 
     private val callback = object : Callback<BrandModels?> {
         override fun onResponse(call: Call<BrandModels?>, response: Response<BrandModels?>) {
@@ -68,7 +69,14 @@ class BrandModelsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_brand_models, container, false)
+        binding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.fragment_brand_models,
+            container,
+            false
+        )
+
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,19 +88,9 @@ class BrandModelsFragment : Fragment() {
 
         brandModels?.enqueue(callback)
 
-        val recycler = view.findViewById<RecyclerView>(R.id.brand_models_list)
-
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-        recycler.apply {
-            addItemDecoration(
-                DividerItemDecoration(
-                    context,
-                    layoutManager.orientation
-                )
-            )
-
+        binding?.apply {
             adapter = brandModelsListAdapter
+            brandModelsList.addVerticalDivider()
         }
     }
 }

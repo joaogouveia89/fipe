@@ -10,7 +10,7 @@ data class ModelDetails(
     @SerializedName("Valor") val value: String,
     @SerializedName("Marca") val brand: String,
     @SerializedName("Modelo") val model: String,
-    @SerializedName("AnoModelo") val year: Int,
+    @SerializedName("AnoModelo") val year: String,
     @SerializedName("Combustivel") val fuel: String,
     @SerializedName("CodigoFipe") val fipeCode: String,
     @SerializedName("MesReferencia") val referenceMonth: String,

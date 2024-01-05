@@ -5,10 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import io.github.joaogouveia89.fipe.R
+import io.github.joaogouveia89.fipe.databinding.FragmentModelDetailsBinding
 import io.github.joaogouveia89.fipe.ktx.setTitle
 import io.github.joaogouveia89.fipe.network.FipeApi
 import io.github.joaogouveia89.fipe.network.models.ModelDetails
@@ -22,45 +23,13 @@ class ModelDetailsFragment : Fragment() {
 
     private val args: ModelDetailsFragmentArgs by navArgs()
 
-    private val modelName: TextView by lazy {
-        requireView().findViewById(R.id.model_name)
-    }
-
-    private val modelBrand: TextView by lazy {
-        requireView().findViewById(R.id.model_brand)
-    }
-
-    private val modelYear: TextView by lazy {
-        requireView().findViewById(R.id.model_year)
-    }
-
-    private val modelFipeCode: TextView by lazy {
-        requireView().findViewById(R.id.model_fipecode)
-    }
-
-    private val modelReferenceMonth: TextView by lazy {
-        requireView().findViewById(R.id.model_referencemonth)
-    }
-
-    private val modelFuel: TextView by lazy {
-        requireView().findViewById(R.id.model_fuel)
-    }
-
-    private val modelValue: TextView by lazy {
-        requireView().findViewById(R.id.model_value)
-    }
+    private var binding: FragmentModelDetailsBinding? = null
 
     private val callback = object : Callback<ModelDetails?> {
         override fun onResponse(call: Call<ModelDetails?>, response: Response<ModelDetails?>) {
             Log.i("JOAODEBUG", response.body().toString())
             response.body()?.let {
-                modelName.text = it.model
-                modelBrand.text = it.brand
-                modelYear.text = it.year.toString()
-                modelFuel.text = it.fuel
-                modelFipeCode.text = it.fipeCode
-                modelReferenceMonth.text = it.referenceMonth
-                modelValue.text = it.value
+                binding?.modelDetails = it
             }
         }
 
@@ -75,7 +44,14 @@ class ModelDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_model_details, container, false)
+        binding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.fragment_model_details,
+            container,
+            false
+        )
+
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
