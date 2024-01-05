@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import io.github.joaogouveia89.fipe.FipeFragment
@@ -25,6 +26,8 @@ class BrandModelsFragment : FipeFragment() {
 
     private val args: BrandModelsFragmentArgs by navArgs()
     private var binding: FragmentBrandModelsBinding? = null
+
+    private val viewModel: BrandModelsViewModel by viewModels()
 
     private val callback = object : Callback<BrandModels?> {
         override fun onResponse(call: Call<BrandModels?>, response: Response<BrandModels?>) {

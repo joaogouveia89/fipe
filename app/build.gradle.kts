@@ -44,6 +44,7 @@ android {
 
 dependencies {
     val nav_version = "2.7.6"
+    val viewmodel_version = "2.6.2"
     val dagger_version = "2.50"
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -63,6 +64,9 @@ dependencies {
     //Dagger
     implementation("com.google.dagger:dagger:$dagger_version")
     kapt ("com.google.dagger:dagger-compiler:$dagger_version")
+
+    //viewmodel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

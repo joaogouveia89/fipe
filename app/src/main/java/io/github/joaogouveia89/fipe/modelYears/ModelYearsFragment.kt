@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import io.github.joaogouveia89.fipe.FipeFragment
@@ -25,6 +26,8 @@ class ModelYearsFragment : FipeFragment() {
 
     private val args: ModelYearsFragmentArgs by navArgs()
     private var binding: FragmentModelYearsBinding? = null
+
+    private val viewModel: ModelYearsViewModel by viewModels()
 
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
         override fun onSelected(modelYear: FipeResult) {

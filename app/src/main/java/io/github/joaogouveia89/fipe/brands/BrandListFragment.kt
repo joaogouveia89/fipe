@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import io.github.joaogouveia89.fipe.FipeFragment
 import io.github.joaogouveia89.fipe.OnListItemSelected
@@ -21,6 +22,7 @@ import retrofit2.Response
 
 class BrandListFragment : FipeFragment() {
 
+    private val viewModel: BrandsListViewModel by viewModels()
     private var binding: FragmentBrandListBinding? = null
 
     private val brandListAdapter = FipeResultListAdapter(object : OnListItemSelected {
