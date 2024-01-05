@@ -3,7 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
-    id ("kotlin-kapt")
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -46,6 +47,7 @@ dependencies {
     val nav_version = "2.7.6"
     val viewmodel_version = "2.6.2"
     val dagger_version = "2.50"
+    val roomVersion = "2.6.1"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -67,6 +69,9 @@ dependencies {
 
     //viewmodel
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version")
+
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
